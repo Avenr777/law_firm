@@ -622,6 +622,62 @@
     color: var(--mahogany);
     line-height: 1.5;
   }
+
+  .partners {
+    background: var(--cream);
+    position: relative;
+  }
+  .partners .section-title {
+    color: var(--walnut);
+  }
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .partner-card {
+    background: var(--white);
+    border: 1px solid rgba(184,148,63,0.18);
+    border-top: 3px solid var(--gold);
+    padding: 2rem;
+    box-shadow: 0 18px 42px rgba(0,0,0,0.04);
+  }
+  .partner-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    margin-bottom: 0.35rem;
+    color: var(--walnut);
+  }
+  .partner-role {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .partner-contact {
+    margin-bottom: 1rem;
+  }
+  .partner-contact span {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+  .partner-contact a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  .partner-contact a:hover {
+    color: var(--gold-light);
+  }
  
   /* ── PRACTICE AREAS ────────────────────── */
   .practice {
@@ -1105,6 +1161,7 @@
       gap: 3rem;
     }
     .practice-grid { grid-template-columns: repeat(2, 1fr); }
+    .partners-grid { grid-template-columns: 1fr; }
     .about-image-wrap { display: none; }
     footer { flex-direction: column; text-align: center; gap: 1rem; }
   }
@@ -1273,7 +1330,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══════ PRACTICE AREAS ═══════ -->
 <section class="practice" id="practice">
   <div class="section-inner">
@@ -1318,7 +1375,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══════ WHY US ═══════ -->
 <section class="why" id="why">
   <div class="section-inner why-grid">
@@ -1386,6 +1443,42 @@
           <span class="cert-icon">🤝</span>
           <span class="cert-text">Mediation<br/>Certified</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PARTNERS ═══════ -->
+<section class="partners" id="partners">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow"><span>Leadership</span></div>
+      <h2 class="section-title">Meet Our <em>Partners</em></h2>
+      <div class="partners-grid">
+        <article class="partner-card reveal">
+          <div class="partner-name">MR. RAKESH SINHA</div>
+          <div class="partner-role">Partner</div>
+          <div class="partner-contact">
+            <span>Mobile</span>
+            <a href="tel:+919811198083">+91-98111-98083</a>
+          </div>
+          <div class="partner-contact">
+            <span>Email</span>
+            <a href="mailto:rakeshsinha@indlegal.in">rakeshsinha@indlegal.in</a>
+          </div>
+        </article>
+        <article class="partner-card reveal" style="transition-delay:0.1s">
+          <div class="partner-name">MD. GHULAM AKBAR</div>
+          <div class="partner-role">Partner</div>
+          <div class="partner-contact">
+            <span>Mobile</span>
+            <a href="tel:+919810112719">+91-98101-12719</a>
+          </div>
+          <div class="partner-contact">
+            <span>Email</span>
+            <a href="mailto:mgakbar@indlegal.in">mgakbar@indlegal.in</a>
+          </div>
+        </article>
       </div>
     </div>
   </div>
