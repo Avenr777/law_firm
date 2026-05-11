@@ -1,1655 +1,974 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>IND LEGAL — Advocates & Solicitors</title>
+<title>Ind-Legal — Advocates & Solicitors, New Delhi</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --walnut:     #2C1A0E;
-    --mahogany:   #4A2512;
-    --cedar:      #7B4A2D;
-    --teak:       #A0623A;
-    --oak:        #C4925A;
-    --sand:       #D9BB96;
-    --parchment:  #F2E8D9;
-    --cream:      #FAF5ED;
-    --gold:       #B8943F;
-    --gold-light: #D4AF6A;
-    --ink:        #1A120B;
-    --text-muted: #6B5040;
-    --white:      #FFFFFF;
- 
-    --fs-xl:  clamp(2.8rem, 6vw, 5.2rem);
-    --fs-lg:  clamp(1.8rem, 3.5vw, 3rem);
-    --fs-md:  clamp(1.2rem, 2vw, 1.6rem);
-    --fs-sm:  0.88rem;
-    --radius: 2px;
-    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
- 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-  html { scroll-behavior: smooth; }
- 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
- 
-  /* ── WOOD GRAIN TEXTURE ─────────────────── */
-  .wood-texture::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(
-        92deg,
-        transparent,
-        transparent 3px,
-        rgba(0,0,0,0.03) 3px,
-        rgba(0,0,0,0.03) 4px
-      ),
-      repeating-linear-gradient(
-        178deg,
-        transparent,
-        transparent 8px,
-        rgba(255,255,255,0.02) 8px,
-        rgba(255,255,255,0.02) 9px
-      );
-    pointer-events: none;
-    z-index: 0;
-  }
- 
-  /* ── NAV ───────────────────────────────── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(44, 26, 14, 0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(184, 148, 63, 0.25);
-    padding: 0 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 72px;
-    transition: var(--transition);
-  }
- 
-  .nav-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  .nav-brand span:first-child {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--gold-light);
-  }
-  .nav-brand span:last-child {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 400;
-    letter-spacing: 0.32em;
-    color: var(--sand);
-    text-transform: uppercase;
-  }
- 
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-    align-items: center;
-  }
-  .nav-toggle {
-    display: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-  }
-  .nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--gold);
-    position: relative;
-    transition: transform var(--transition), background var(--transition);
-  }
-  .nav-toggle span::before,
-  .nav-toggle span::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 22px;
-    height: 2px;
-    background: var(--gold);
-    transition: transform var(--transition), top var(--transition);
-  }
-  .nav-toggle span::before { top: -7px; }
-  .nav-toggle span::after { top: 7px; }
-  .nav-toggle.open span { background: transparent; }
-  .nav-toggle.open span::before { transform: translateY(7px) rotate(45deg); }
-  .nav-toggle.open span::after { transform: translateY(-7px) rotate(-45deg); }
-  .nav-links a {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sand);
-    text-decoration: none;
-    position: relative;
-    padding-bottom: 3px;
-    transition: color var(--transition);
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width var(--transition);
-  }
-  .nav-links a:hover { color: var(--gold-light); }
-  .nav-links a:hover::after { width: 100%; }
- 
-  .nav-cta {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold-light) !important;
-    padding: 0.5rem 1.4rem !important;
-    border-radius: var(--radius);
-    transition: background var(--transition), color var(--transition) !important;
-  }
-  .nav-cta:hover {
-    background: var(--gold) !important;
-    color: var(--walnut) !important;
-  }
-  .nav-cta::after { display: none !important; }
- 
-  /* ── HERO ──────────────────────────────── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: var(--walnut);
-  }
- 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 70% 50%, rgba(124, 74, 45, 0.45) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 80%, rgba(74, 37, 18, 0.6) 0%, transparent 50%),
-      linear-gradient(135deg, #1A0D07 0%, #2C1A0E 35%, #3D2210 60%, #2C1A0E 100%);
-    background-size: cover;
-  }
- 
-  /* Decorative vertical line */
-  .hero-bg::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    width: 1px; height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(184,148,63,0.2), transparent);
-    transform: translateX(-50%);
-  }
- 
-  .hero-grain {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-    opacity: 0.5;
-  }
- 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 5vw;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding-top: 72px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
- 
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
-    animation-delay: 0.2s;
-  }
-  .hero-eyebrow::before, .hero-eyebrow::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    max-width: 50px;
-  }
-  .hero-eyebrow span {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.35em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
- 
-  .hero-heading {
-    font-family: 'Playfair Display', serif;
-    font-size: var(--fs-xl);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--cream);
-    margin-bottom: 1rem;
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
-    animation-delay: 0.35s;
-  }
-  .hero-heading .firm-name {
-    color: var(--gold-light);
-    font-size: 1.0em;
-    letter-spacing: 0.05em;
-  }
-  .hero-heading em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
- 
-  .hero-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--sand);
-    margin-bottom: 2.5rem;
-    max-width: 480px;
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
-    animation-delay: 0.5s;
-  }
- 
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
-    animation-delay: 0.65s;
-  }
- 
-  .btn-primary {
-    background: var(--gold);
-    color: var(--walnut);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition);
-    display: inline-block;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gold-light);
-    transform: translateX(-100%);
-    transition: transform var(--transition);
-  }
-  .btn-primary:hover::before { transform: translateX(0); }
-  .btn-primary span { position: relative; z-index: 1; }
- 
-  .btn-outline {
-    background: transparent;
-    color: var(--sand);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border: 1px solid rgba(196, 146, 90, 0.4);
-    cursor: pointer;
-    transition: var(--transition);
-    display: inline-block;
-  }
-  .btn-outline:hover {
-    border-color: var(--gold);
-    color: var(--gold-light);
-  }
- 
-  /* Hero right card */
-  .hero-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(184,148,63,0.2);
-    padding: 2.5rem;
-    animation: fadeIn 1s ease forwards;
-    opacity: 0;
-    animation-delay: 0.7s;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: linear-gradient(to bottom, var(--gold), var(--cedar));
-  }
- 
-  .hero-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--gold-light);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-  }
- 
-  .contact-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.2rem;
-  }
-  .contact-icon {
-    width: 36px; height: 36px;
-    background: rgba(184,148,63,0.1);
-    border: 1px solid rgba(184,148,63,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 0.9rem;
-  }
-  .contact-info { flex: 1; }
-  .contact-label {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-  .contact-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--sand);
-    line-height: 1.5;
-  }
-  .contact-value a {
-    color: var(--sand);
-    text-decoration: none;
-    transition: color var(--transition);
-  }
-  .contact-value a:hover { color: var(--gold-light); }
- 
-  /* ── STATS BAR ─────────────────────────── */
-  .stats-bar {
-    background: var(--mahogany);
-    border-top: 1px solid rgba(184,148,63,0.3);
-    border-bottom: 1px solid rgba(184,148,63,0.3);
-    padding: 2.2rem 5vw;
-  }
-  .stats-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-  .stat-item {
-    text-align: center;
-    padding: 1rem;
-    border-right: 1px solid rgba(196, 146, 90, 0.2);
-    position: relative;
-  }
-  .stat-item:last-child { border-right: none; }
- 
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--gold-light);
-    line-height: 1;
-    display: block;
-  }
-  .stat-suffix {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-  }
-  .stat-label {
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sand);
-    margin-top: 0.4rem;
-    display: block;
-  }
- 
-  /* ── SECTION SHARED ────────────────────── */
-  section { padding: 6rem 5vw; }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
- 
-  .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-  .eyebrow::before {
-    content: '';
-    width: 28px; height: 1px;
-    background: var(--gold);
-  }
-  .eyebrow span {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
- 
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: var(--fs-lg);
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--walnut);
-  }
-  .section-title em {
-    font-style: italic;
-    color: var(--cedar);
-  }
- 
-  /* ── ABOUT ─────────────────────────────── */
-  .about {
-    background: var(--cream);
-    position: relative;
-  }
-  .about::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: linear-gradient(to bottom, var(--gold), var(--cedar), transparent);
-  }
- 
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 5rem;
-    align-items: center;
-  }
- 
-  .about-image-wrap {
-    position: relative;
-  }
-  .about-image-block {
-    width: 100%;
-    aspect-ratio: 3/4;
-    max-height: 500px;
-    background: linear-gradient(135deg, var(--mahogany) 0%, var(--cedar) 50%, var(--teak) 100%);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    padding: 2rem;
-  }
-  .about-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    opacity: 0.95;
-  }
-  .about-image-block::before {
-    content: '⚖';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -60%);
-    font-size: 7rem;
-    opacity: 0.12;
-    color: var(--gold);
-  }
-  .about-badge {
-    position: absolute;
-    bottom: -1.5rem;
-    right: -1.5rem;
-    width: 120px; height: 120px;
-    background: var(--gold);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 2px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  }
-  .about-badge strong {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--walnut);
-    line-height: 1;
-  }
-  .about-badge span {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--mahogany);
-  }
- 
-  .about-content { padding-top: 1rem; }
- 
-  .about-lead {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--mahogany);
-    margin: 1.5rem 0;
-    border-left: 2px solid var(--gold);
-    padding-left: 1.5rem;
-    font-style: italic;
-  }
- 
-  .about-body {
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-  }
- 
-  .about-pillars {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  .pillar {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 1.1rem;
-    background: var(--parchment);
-    border: 1px solid rgba(184,148,63,0.2);
-    border-top: 2px solid var(--gold);
-  }
-  .pillar-dot {
-    width: 8px; height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    margin-top: 4px;
-    flex-shrink: 0;
-  }
-  .pillar-text {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--mahogany);
-    line-height: 1.5;
-  }
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root{
+  --walnut:#2C1A0E; --mahogany:#4A2512; --cedar:#7B4A2D;
+  --teak:#A0623A;   --oak:#C4925A;      --sand:#D9BB96;
+  --parchment:#F2E8D9; --cream:#FAF5ED;
+  --gold:#B8943F;   --gold-lt:#D4AF6A;  --gold-dk:#8A6C2A;
+  --ink:#1A120B;    --muted:#6B5040;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --t:.35s var(--ease);
+  --r:2px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
 
-  .partners {
-    background: var(--cream);
-    position: relative;
-  }
-  .partners .section-title {
-    color: var(--walnut);
-  }
-  .partners-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .partner-card {
-    background: var(--white);
-    border: 1px solid rgba(184,148,63,0.18);
-    border-top: 3px solid var(--gold);
-    padding: 2rem;
-    box-shadow: 0 18px 42px rgba(0,0,0,0.04);
-  }
-  .partner-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.45rem;
-    line-height: 1.1;
-    margin-bottom: 0.35rem;
-    color: var(--walnut);
-  }
-  .partner-role {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
-  }
-  .partner-contact {
-    margin-bottom: 1rem;
-  }
-  .partner-contact span {
-    display: block;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.35rem;
-  }
-  .partner-contact a {
-    color: var(--ink);
-    text-decoration: none;
-    transition: color var(--transition);
-  }
-  .partner-contact a:hover {
-    color: var(--gold-light);
-  }
- 
-  /* ── PRACTICE AREAS ────────────────────── */
-  .practice {
-    background: var(--walnut);
-    position: relative;
-    overflow: hidden;
-  }
-  .practice::before {
-    content: '';
-    position: absolute;
-    top: -50%; right: -20%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(124, 74, 45, 0.3) 0%, transparent 70%);
-    pointer-events: none;
-  }
- 
-  .practice .section-title { color: var(--parchment); }
-  .practice .eyebrow span { color: var(--gold-light); }
-  .practice .eyebrow::before { background: var(--gold-light); }
- 
-  .practice-intro {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    color: var(--sand);
-    line-height: 1.8;
-    margin: 1.5rem 0 3rem;
-    max-width: 600px;
-  }
- 
-  .practice-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: rgba(184,148,63,0.15);
-    margin-top: 3rem;
-  }
- 
-  .practice-card {
-    background: rgba(255,255,255,0.02);
-    padding: 2.5rem 2rem;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: background var(--transition);
-  }
-  .practice-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(to right, var(--gold), transparent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition);
-  }
-  .practice-card:hover { background: rgba(255,255,255,0.04); }
-  .practice-card:hover::before { transform: scaleX(1); }
- 
-  .practice-icon {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-    display: block;
-    opacity: 0.8;
-  }
-  .practice-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--parchment);
-    margin-bottom: 0.75rem;
-  }
-  .practice-desc {
-    font-size: 0.83rem;
-    line-height: 1.8;
-    color: rgba(217, 187, 150, 0.7);
-  }
- 
-  /* ── WHY US ────────────────────────────── */
-  .why {
-    background: var(--parchment);
-  }
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
- 
-  .why-list { margin-top: 2rem; }
-  .why-item {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(124,74,45,0.12);
-  }
-  .why-item:last-child { border-bottom: none; }
-  .why-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: rgba(184,148,63,0.25);
-    line-height: 1;
-    min-width: 2.5rem;
-  }
-  .why-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--walnut);
-    margin-bottom: 0.4rem;
-  }
-  .why-desc {
-    font-size: 0.85rem;
-    line-height: 1.8;
-    color: var(--text-muted);
-  }
- 
-  .why-right { position: relative; }
-  .testimonial-block {
-    background: var(--walnut);
-    padding: 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .testimonial-block::before {
-    content: '"';
-    position: absolute;
-    top: -0.5rem;
-    left: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 8rem;
-    color: rgba(184,148,63,0.15);
-    line-height: 1;
-  }
-  .testimonial-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--parchment);
-    line-height: 1.8;
-    position: relative;
-    z-index: 1;
-    margin-bottom: 1.5rem;
-  }
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .author-dot {
-    width: 32px; height: 32px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--walnut);
-  }
-  .author-name {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--gold-light);
-    letter-spacing: 0.1em;
-  }
-  .author-role {
-    font-size: 0.72rem;
-    color: var(--sand);
-    margin-top: 1px;
-  }
- 
-  .cert-badges {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    margin-top: 1.5px;
-    background: rgba(184,148,63,0.2);
-  }
-  .cert-badge {
-    background: var(--mahogany);
-    padding: 1.2rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .cert-icon {
-    font-size: 1.4rem;
-  }
-  .cert-text {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--sand);
-    letter-spacing: 0.05em;
-    line-height: 1.4;
-  }
- 
-  /* ── CONTACT ───────────────────────────── */
-  .contact-section {
-    background: var(--walnut);
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 40px,
-      rgba(184,148,63,0.03) 40px,
-      rgba(184,148,63,0.03) 41px
-    );
-  }
- 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    position: relative;
-    z-index: 1;
-  }
- 
-  .contact-section .section-title { color: var(--parchment); }
-  .contact-section .eyebrow span { color: var(--gold-light); }
-  .contact-section .eyebrow::before { background: var(--gold-light); }
- 
-  .contact-desc {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--sand);
-    line-height: 1.8;
-    margin: 1.5rem 0 2.5rem;
-  }
- 
-  .contact-details {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .contact-detail-row {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-  .detail-icon {
-    width: 40px; height: 40px;
-    background: rgba(184,148,63,0.12);
-    border: 1px solid rgba(184,148,63,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .detail-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-  .detail-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    color: var(--parchment);
-    line-height: 1.6;
-  }
-  .detail-value a {
-    color: var(--parchment);
-    text-decoration: none;
-    transition: color var(--transition);
-  }
-  .detail-value a:hover { color: var(--gold-light); }
- 
-  /* FORM */
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
- 
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
- 
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .form-field label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .form-field input,
-  .form-field select,
-  .form-field textarea {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(184,148,63,0.25);
-    color: var(--parchment);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.9rem;
-    padding: 0.85rem 1rem;
-    outline: none;
-    transition: border-color var(--transition);
-    width: 100%;
-    resize: none;
-  }
-  .form-field input::placeholder,
-  .form-field textarea::placeholder { color: rgba(217,187,150,0.35); }
-  .form-field input:focus,
-  .form-field select:focus,
-  .form-field textarea:focus {
-    border-color: var(--gold);
-    background: rgba(255,255,255,0.06);
-  }
-  .form-field select {
-    appearance: none;
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8943F' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-  }
-  .form-field select option { background: var(--walnut); color: var(--parchment); }
- 
-  /* ── FOOTER ────────────────────────────── */
-  footer {
-    background: #160C05;
-    padding: 2.5rem 5vw;
-    border-top: 1px solid rgba(184,148,63,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-  .footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gold-light);
-    letter-spacing: 0.1em;
-  }
-  .footer-copy {
-    font-size: 0.75rem;
-    color: rgba(217,187,150,0.4);
-    letter-spacing: 0.05em;
-  }
-  .footer-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-  }
-  .footer-links a {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(217,187,150,0.5);
-    text-decoration: none;
-    transition: color var(--transition);
-  }
-  .footer-links a:hover { color: var(--gold-light); }
- 
-  /* ── ANIMATIONS ────────────────────────── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
- 
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
- 
-  /* ── DIVIDER ───────────────────────────── */
-  .gold-divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0;
-  }
-  .gold-divider::before, .gold-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(184,148,63,0.3);
-  }
-  .gold-divider-diamond {
-    width: 6px; height: 6px;
-    background: var(--gold);
-    transform: rotate(45deg);
-  }
- 
-  /* ── SCROLLBAR ─────────────────────────── */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--walnut); }
-  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
- 
-  /* ── RESPONSIVE ────────────────────────── */
-  @media (max-width: 900px) {
-    nav {
-      padding: 0 1.5rem;
-      position: relative;
-      align-items: center;
-      min-height: 72px;
-    }
-    .nav-toggle {
-      display: flex;
-      position: absolute;
-      top: 50%;
-      right: 1.5rem;
-      transform: translateY(-50%);
-      z-index: 101;
-    }
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background: rgba(44, 26, 14, 0.98);
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem 1.5rem 1.2rem;
-      border-bottom: 1px solid rgba(184, 148, 63, 0.3);
-      z-index: 99;
-    }
-    .nav-links.active {
-      display: flex;
-    }
-    .nav-links li { width: 100%; }
-    .nav-links a { width: 100%; display: block; }
-    .hero-content {
-      grid-template-columns: 1fr;
-      padding-top: 110px;
-      gap: 2rem;
-    }
-    .hero-card {
-      display: block;
-      width: 100%;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .btn-primary,
-    .btn-outline {
-      width: 100%;
-      text-align: center;
-    }
-    .stats-inner {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .about-grid,
-    .why-grid,
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    .practice-grid { grid-template-columns: repeat(2, 1fr); }
-    .partners-grid { grid-template-columns: 1fr; }
-    .about-image-wrap { display: none; }
-    footer { flex-direction: column; text-align: center; gap: 1rem; }
-  }
-  @media (max-width: 540px) {
-    nav { padding: 0 1rem; }
-    .hero-content { padding-top: 100px; gap: 1.5rem; }
-    .hero-heading { font-size: clamp(2.2rem, 10vw, 3.8rem); }
-    .hero-sub { font-size: 1rem; max-width: 100%; }
-    .hero-eyebrow span { font-size: 0.72rem; }
-    .stats-bar { display: none; }
-    .stats-inner { grid-template-columns: 1fr; }
-    .practice-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .about-pillars { grid-template-columns: 1fr; }
-    .contact-section { padding: 4rem 1rem; }
-    footer { padding: 2rem 1rem; }
-    .nav-links {
-      top: 72px;
-      padding: 1rem;
-    }
-  }
+/* ─── SCROLLBAR ──────────────────────────────────────────── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--walnut)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ─── CURSOR ACCENT ─────────────────────────────────────── */
+.btn-primary,.btn-outline,.nav-links a,.practice-card,.partner-card,.why-item{cursor:pointer}
+
+/* ─── ORNAMENT SYSTEM ───────────────────────────────────── */
+.orn{display:flex;align-items:center;gap:.75rem;margin-bottom:1.1rem}
+.orn::before{content:'';width:24px;height:1px;background:var(--gold)}
+.orn span{font-size:.64rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+
+.orn-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0}
+.orn-divider::before,.orn-divider::after{content:'';flex:1;height:1px;background:rgba(184,148,63,.22)}
+.orn-divider i{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+
+/* section title */
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;line-height:1.18;color:var(--walnut)}
+.s-title em{font-style:italic;color:var(--cedar)}
+.s-title.light{color:var(--parchment)}
+.s-title.light em{color:var(--gold-lt)}
+
+/* ─── NAV ────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:70px;padding:0 5vw;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(28,15,6,.96);
+  border-bottom:1px solid rgba(184,148,63,.18);
+  backdrop-filter:blur(14px);
+  transition:height var(--t),box-shadow var(--t);
+}
+nav.scrolled{height:60px;box-shadow:0 6px 40px rgba(0,0,0,.5)}
+
+.nav-brand{display:flex;flex-direction:column;gap:2px}
+.nav-brand .brand-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;letter-spacing:.1em;color:var(--gold-lt);line-height:1}
+.nav-brand .brand-sub{font-size:.58rem;letter-spacing:.3em;color:rgba(217,187,150,.55);text-transform:uppercase}
+
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{
+  font-size:.76rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(217,187,150,.75);text-decoration:none;
+  position:relative;padding-bottom:3px;transition:color var(--t);
+}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width var(--t)}
+.nav-links a:hover{color:var(--gold-lt)}
+.nav-links a:hover::after{width:100%}
+
+.nav-cta{
+  background:transparent!important;
+  border:1px solid rgba(184,148,63,.7)!important;
+  color:var(--gold-lt)!important;
+  padding:.45rem 1.3rem!important;
+  transition:background var(--t),color var(--t),border-color var(--t)!important;
+}
+.nav-cta:hover{background:var(--gold)!important;color:var(--walnut)!important;border-color:var(--gold)!important}
+.nav-cta::after{display:none!important}
+
+.nav-toggle{
+  display:none;border:none;background:transparent;cursor:pointer;
+  width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;
+}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--gold);transition:transform var(--t),opacity var(--t)}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;overflow:hidden;
+  background:var(--walnut);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 72% 48%,rgba(124,74,45,.5) 0%,transparent 58%),
+    radial-gradient(ellipse at 18% 78%,rgba(74,37,18,.65) 0%,transparent 50%),
+    linear-gradient(135deg,#150902 0%,#2C1A0E 40%,#3D2210 65%,#2C1A0E 100%);
+}
+/* subtle grain */
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  opacity:.5;pointer-events:none;
+}
+/* decorative vertical line */
+.hero-vline{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(184,148,63,.18) 30%,rgba(184,148,63,.08) 70%,transparent);pointer-events:none}
+
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 5vw;max-width:1240px;margin:0 auto;width:100%;
+  padding-top:70px;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:.9rem;margin-bottom:1.6rem;
+  opacity:0;animation:fadeUp .8s var(--ease) .2s forwards;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;max-width:44px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.hero-eyebrow span{font-size:.66rem;font-weight:500;letter-spacing:.34em;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+
+.hero-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.1;
+  color:var(--cream);margin-bottom:1.1rem;
+  opacity:0;animation:fadeUp .8s var(--ease) .35s forwards;
+}
+.hero-heading .brand{color:var(--gold-lt);letter-spacing:.04em}
+.hero-heading em{font-style:italic;color:var(--gold-lt)}
+
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:300;
+  line-height:1.85;color:var(--sand);margin-bottom:2.5rem;max-width:470px;
+  opacity:0;animation:fadeUp .8s var(--ease) .5s forwards;
+}
+.hero-actions{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .8s var(--ease) .65s forwards;
+}
+
+/* hero contact card */
+.hero-card{
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(184,148,63,.22);
+  padding:2.4rem;
+  position:relative;overflow:hidden;
+  opacity:0;animation:fadeIn 1s var(--ease) .75s forwards;
+}
+.hero-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(to bottom,var(--gold),var(--cedar) 60%,transparent)}
+.hero-card::after{content:'';position:absolute;top:0;right:0;width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(184,148,63,.3),transparent)}
+.hero-card-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold-lt);margin-bottom:1.4rem;letter-spacing:.06em}
+
+.contact-row{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.1rem}
+.contact-icon{
+  width:34px;height:34px;flex-shrink:0;
+  background:rgba(184,148,63,.08);border:1px solid rgba(184,148,63,.22);
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;
+}
+.contact-label{font-size:.59rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.2rem}
+.contact-value{font-family:'Cormorant Garamond',serif;font-size:.98rem;color:var(--sand);line-height:1.5}
+.contact-value a{color:var(--sand);text-decoration:none;transition:color var(--t)}
+.contact-value a:hover{color:var(--gold-lt)}
+.hours-note{font-size:.72rem;color:rgba(217,187,150,.45);text-align:center;letter-spacing:.1em}
+
+/* ─── BUTTONS ────────────────────────────────────────────── */
+.btn-primary{
+  font-family:'Jost',sans-serif;font-size:.76rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;text-decoration:none;
+  padding:.95rem 2rem;border:none;display:inline-block;
+  background:var(--gold);color:var(--walnut);
+  position:relative;overflow:hidden;transition:color var(--t);
+}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--gold-lt);transform:translateX(-102%);transition:transform .4s var(--ease)}
+.btn-primary:hover::before{transform:translateX(0)}
+.btn-primary span{position:relative;z-index:1}
+.btn-primary:hover{color:var(--walnut)}
+
+.btn-outline{
+  font-family:'Jost',sans-serif;font-size:.76rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;text-decoration:none;
+  padding:.95rem 2rem;border:1px solid rgba(196,146,90,.38);
+  color:rgba(217,187,150,.8);background:transparent;
+  display:inline-block;transition:border-color var(--t),color var(--t),background var(--t);
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-lt);background:rgba(184,148,63,.06)}
+
+/* ─── STATS ──────────────────────────────────────────────── */
+.stats-bar{
+  background:var(--mahogany);
+  border-top:1px solid rgba(184,148,63,.28);
+  border-bottom:1px solid rgba(184,148,63,.28);
+  padding:2rem 5vw;
+}
+.stats-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{
+  text-align:center;padding:1rem 0;
+  border-right:1px solid rgba(196,146,90,.18);
+  position:relative;
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;
+  color:var(--gold-lt);line-height:1;display:block;
+}
+.stat-suffix{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold)}
+.stat-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-top:.5rem;display:block;opacity:.8}
+
+/* ─── SHARED SECTION ─────────────────────────────────────── */
+section{padding:6rem 5vw}
+.s-inner{max-width:1240px;margin:0 auto}
+
+/* ─── REVEAL ─────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ─── ABOUT ──────────────────────────────────────────────── */
+.about{background:var(--cream);position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:5rem;align-items:center}
+
+.about-img-wrap{position:relative}
+.about-img-block{
+  width:100%;aspect-ratio:3/4;max-height:520px;
+  background:linear-gradient(140deg,var(--mahogany),var(--cedar) 55%,var(--teak));
+  position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:2rem;
+}
+.about-img-block img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.95}
+.about-img-block::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(28,12,4,.55) 0%,transparent 50%);
+}
+.about-quote{position:relative;z-index:2}
+.about-quote p{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;color:rgba(242,232,217,.75);margin-bottom:.35rem;line-height:1.5}
+.about-quote cite{font-size:.6rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+
+.about-badge{
+  position:absolute;bottom:-1.4rem;right:-1.4rem;
+  width:114px;height:114px;background:var(--gold);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;
+  box-shadow:0 12px 36px rgba(0,0,0,.28);z-index:3;
+}
+.about-badge strong{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--walnut);line-height:1}
+.about-badge span{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mahogany)}
+
+.about-lead{
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;
+  line-height:1.75;color:var(--mahogany);
+  margin:1.4rem 0;padding-left:1.4rem;
+  border-left:2px solid var(--gold);font-style:italic;
+}
+.about-body{font-size:.93rem;line-height:1.95;color:var(--muted);margin-bottom:1.2rem}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:2rem}
+.pillar{
+  display:flex;align-items:flex-start;gap:.7rem;
+  padding:1rem 1.1rem;
+  background:var(--parchment);
+  border:1px solid rgba(184,148,63,.18);
+  border-top:2px solid var(--gold);
+  transition:transform var(--t),box-shadow var(--t);
+}
+.pillar:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.pillar-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;margin-top:4px;flex-shrink:0}
+.pillar-text{font-size:.81rem;font-weight:500;color:var(--mahogany);line-height:1.5}
+
+/* ─── MISSION ────────────────────────────────────────────── */
+.mission{
+  background:linear-gradient(180deg,rgba(250,245,237,1) 0%,rgba(242,232,217,.95) 100%);
+  position:relative;
+}
+.mission::before{content:'';position:absolute;top:0;left:5vw;right:5vw;height:1px;background:rgba(184,148,63,.16)}
+.mission .about-body{color:var(--ink);max-width:800px}
+.mission .pillars{grid-template-columns:repeat(2,1fr)}
+.mission .pillar{background:rgba(255,255,255,.9);box-shadow:0 6px 24px rgba(0,0,0,.05)}
+
+/* ─── PRACTICE ───────────────────────────────────────────── */
+.practice{background:var(--walnut);position:relative;overflow:hidden}
+.practice::before{content:'';position:absolute;top:-40%;right:-18%;width:600px;height:600px;background:radial-gradient(circle,rgba(124,74,45,.28) 0%,transparent 70%);pointer-events:none}
+.practice::after{content:'';position:absolute;bottom:-30%;left:-15%;width:450px;height:450px;background:radial-gradient(circle,rgba(74,37,18,.35) 0%,transparent 70%);pointer-events:none}
+
+.practice .orn::before{background:var(--gold-lt)}
+.practice .orn span{color:var(--gold-lt)}
+.practice-intro{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--sand);line-height:1.85;margin:1.4rem 0 3rem;max-width:580px;opacity:.9}
+
+.practice-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(184,148,63,.12);margin-top:2rem;
+}
+.practice-card{
+  background:rgba(255,255,255,.02);
+  padding:2.4rem 2rem;position:relative;overflow:hidden;
+  transition:background var(--t);
+}
+.practice-card::before{
+  content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;
+  background:linear-gradient(to right,var(--gold),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);
+}
+.practice-card::after{
+  content:'';position:absolute;top:0;right:0;width:0;height:100%;
+  background:rgba(255,255,255,.015);transition:width .45s var(--ease);
+}
+.practice-card:hover{background:rgba(255,255,255,.04)}
+.practice-card:hover::before{transform:scaleX(1)}
+.practice-card:hover::after{width:100%}
+.p-icon{font-size:1.7rem;margin-bottom:1.1rem;display:block;opacity:.85;transition:transform .35s var(--ease)}
+.practice-card:hover .p-icon{transform:scale(1.12)}
+.p-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--parchment);margin-bottom:.65rem}
+.p-desc{font-size:.81rem;line-height:1.85;color:rgba(217,187,150,.65)}
+
+/* ─── WHY US ─────────────────────────────────────────────── */
+.why{background:var(--parchment)}
+.why-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:4.5rem;align-items:start}
+.why-list{margin-top:2rem;max-width:720px}
+.why-item{
+  display:flex;gap:1.4rem;padding:1.4rem 0;
+  border-bottom:1px solid rgba(124,74,45,.1);
+  transition:background var(--t);
+}
+.why .testimonial,
+.why .cert-grid{
+  max-width:560px;
+  margin-left:auto;
+}
+.why-item:last-child{border-bottom:none}
+.why-item:hover .why-num{color:rgba(184,148,63,.6)}
+.why-num{
+  font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;
+  color:rgba(184,148,63,.22);line-height:1;min-width:2.4rem;
+  transition:color var(--t);
+}
+.why-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--walnut);margin-bottom:.35rem}
+.why-desc{font-size:.84rem;line-height:1.85;color:var(--muted)}
+
+.testimonial{
+  background:var(--walnut);padding:2.8rem;position:relative;overflow:hidden;
+}
+.testimonial::before{
+  content:'\201C';position:absolute;top:-.8rem;left:1.4rem;
+  font-family:'Playfair Display',serif;font-size:9rem;
+  color:rgba(184,148,63,.12);line-height:1;pointer-events:none;
+}
+.testimonial-text{
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+  font-weight:300;font-style:italic;color:var(--parchment);
+  line-height:1.85;position:relative;z-index:1;margin-bottom:1.4rem;
+}
+.t-author{display:flex;align-items:center;gap:.9rem}
+.t-dot{
+  width:30px;height:30px;background:var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:var(--walnut);flex-shrink:0;
+}
+.t-name{font-size:.8rem;font-weight:600;color:var(--gold-lt);letter-spacing:.1em}
+.t-role{font-size:.7rem;color:var(--sand);margin-top:1px}
+
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:1px;background:rgba(184,148,63,.18)}
+.cert-item{
+  background:var(--mahogany);padding:1.1rem 1.4rem;
+  display:flex;align-items:center;gap:.7rem;
+  transition:background var(--t);
+}
+.cert-item:hover{background:rgba(74,37,18,.8)}
+.cert-item span:first-child{font-size:1.3rem}
+.cert-label{font-size:.72rem;font-weight:500;color:var(--sand);line-height:1.4}
+
+/* ─── PARTNERS ───────────────────────────────────────────── */
+.partners{background:var(--cream);position:relative}
+.partners::before{content:'';position:absolute;top:0;left:5vw;right:5vw;height:1px;background:rgba(184,148,63,.16)}
+.partners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+
+.partner-card{
+  background:#fff;
+  border:1px solid rgba(184,148,63,.16);
+  border-top:3px solid var(--gold);
+  padding:2rem 2.2rem;
+  position:relative;overflow:hidden;
+  transition:box-shadow var(--t),transform var(--t);
+}
+.partner-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(184,148,63,.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.partner-card:hover{box-shadow:0 16px 48px rgba(44,26,14,.1);transform:translateY(-3px)}
+
+.partner-initial{
+  width:54px;height:54px;
+  background:linear-gradient(135deg,var(--gold),var(--oak));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;
+  color:var(--walnut);margin-bottom:1.2rem;
+  box-shadow:0 6px 20px rgba(184,148,63,.35);
+}
+.partner-name{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--walnut);margin-bottom:.3rem;line-height:1.1}
+.partner-role{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem}
+
+.partner-detail{margin-bottom:.8rem}
+.partner-detail-label{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.25rem}
+.partner-detail a{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ink);text-decoration:none;transition:color var(--t)}
+.partner-detail a:hover{color:var(--cedar)}
+
+/* ─── CONTACT ────────────────────────────────────────────── */
+.contact-section{background:var(--walnut);position:relative;overflow:hidden}
+.contact-section::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent,transparent 48px,rgba(184,148,63,.025) 48px,rgba(184,148,63,.025) 49px);
+  pointer-events:none;
+}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;position:relative;z-index:1}
+.contact-section .orn::before{background:var(--gold-lt)}
+.contact-section .orn span{color:var(--gold-lt)}
+.contact-section .s-title{color:var(--parchment)}
+.contact-section .s-title em{color:var(--gold-lt)}
+
+.contact-desc{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--sand);line-height:1.85;margin:1.4rem 0 2.5rem;opacity:.9}
+.contact-details{display:flex;flex-direction:column;gap:1.4rem}
+.c-row{display:flex;gap:1rem;align-items:flex-start}
+.c-icon{
+  width:38px;height:38px;flex-shrink:0;
+  background:rgba(184,148,63,.1);border:1px solid rgba(184,148,63,.28);
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-top:2px;
+}
+.c-label{font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.28rem}
+.c-val{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:var(--parchment);line-height:1.6}
+.c-val a{color:var(--parchment);text-decoration:none;transition:color var(--t)}
+.c-val a:hover{color:var(--gold-lt)}
+
+.contact-panels{display:grid;gap:1.2rem}
+.contact-panel{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:2rem;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.08);}
+.contact-panel h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--cream);margin-bottom:.8rem;}
+.contact-panel p{font-size:.95rem;line-height:1.9;color:rgba(242,232,217,.9);margin-bottom:1.5rem;}
+.contact-panel-list{display:grid;gap:1rem}
+.contact-panel-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem; background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;}
+.contact-panel-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(255,255,255,.15);border-radius:14px;flex-shrink:0;color:var(--cream);}
+.contact-panel-copy{display:flex;flex-direction:column;gap:.25rem;}
+.contact-panel-copy strong{font-size:.95rem;color:var(--cream);}
+.contact-panel-copy a{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--sand);text-decoration:none;transition:color var(--t);}
+.contact-panel-copy a:hover{color:var(--gold-lt)}
+.contact-panel-action{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:1rem;padding:.95rem 1.4rem;border-radius:999px;
+  background:rgba(255,255,255,.12);color:var(--cream);border:1px solid rgba(255,255,255,.18);text-decoration:none;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;transition:background var(--t),color var(--t);
+}
+.contact-panel-action:hover{background:rgba(255,255,255,.24);}
+
+
+/* ─── FLOATING CTA ───────────────────────────────────────── */
+.float-cta{
+  position:fixed;bottom:2rem;right:2rem;z-index:300;
+  width:52px;height:52px;background:var(--gold);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;box-shadow:0 8px 28px rgba(184,148,63,.45);
+  text-decoration:none;transition:transform var(--t),box-shadow var(--t);
+  opacity:0;transform:scale(.7);
+}
+.float-cta.show{opacity:1;transform:scale(1)}
+.float-cta:hover{transform:scale(1.1);box-shadow:0 12px 36px rgba(184,148,63,.55)}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer{
+  background:#0E0702;
+  border-top:1px solid rgba(184,148,63,.18);
+  padding:2.2rem 5vw;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  flex-wrap:wrap;
+}
+.f-brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--gold-lt);letter-spacing:.1em}
+.f-copy{font-size:.72rem;color:rgba(217,187,150,.35);letter-spacing:.04em}
+.f-links{display:flex;gap:1.4rem;list-style:none}
+.f-links a{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(217,187,150,.4);text-decoration:none;transition:color var(--t)}
+.f-links a:hover{color:var(--gold-lt)}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:960px){
+  nav{padding:0 1.5rem}
+  .nav-links{
+    display:none;position:absolute;top:70px;left:0;right:0;
+    background:rgba(22,10,4,.98);flex-direction:column;gap:0;
+    border-bottom:1px solid rgba(184,148,63,.25);z-index:199;
+  }
+  .nav-links li{border-bottom:1px solid rgba(184,148,63,.1)}
+  .nav-links li:last-child{border-bottom:none}
+  .nav-links a{display:block;padding:1rem 1.5rem;font-size:.82rem}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:flex}
+
+  .hero-content{grid-template-columns:1fr;padding-top:90px;gap:2rem}
+  .hero-card{padding:2rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-outline{width:100%;text-align:center}
+
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.why-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-img-wrap{display:none}
+  .practice-grid{grid-template-columns:repeat(2,1fr)}
+  .partners-grid{grid-template-columns:1fr}
+
+  footer{flex-direction:column;text-align:center}
+}
+@media(max-width:560px){
+  section{padding:4.5rem 1.2rem}
+  .stats-bar{display:none}
+  .practice-grid{grid-template-columns:1fr}
+  .pillars,.mission .pillars{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .float-cta{bottom:1.2rem;right:1.2rem;width:46px;height:46px;font-size:1.2rem}
+}
 </style>
 </head>
 <body>
- 
-<!-- ═══════ NAV ═══════ -->
-<nav>
+
+<!-- FLOATING CTA -->
+<a href="#contact" class="float-cta" id="floatCta" title="Contact us">✉️</a>
+
+<!-- ═══ NAV ══════════════════════════════════════════════════ -->
+<nav id="nav">
   <div class="nav-brand">
-    <span>Ind-Legal</span>
-    <span>Advocates &amp; Solicitors · New Delhi</span>
+    <span class="brand-name">Ind-Legal</span>
+    <span class="brand-sub">Advocates &amp; Solicitors · New Delhi</span>
   </div>
-  <button class="nav-toggle" type="button" aria-label="Toggle navigation">
-    <span></span>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
   </button>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#practice">Practice Areas</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#contact" class="nav-cta">Consult Now</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#mission" class="nav-link">Mission</a></li>
+    <li><a href="#practice" class="nav-link">Practice Areas</a></li>
+    <li><a href="#why" class="nav-link">Why Us</a></li>
+    <li><a href="#partners" class="nav-link">Partners</a></li>
+    <li><a href="#contact" class="nav-cta nav-link">Consult Now</a></li>
   </ul>
 </nav>
- 
-<!-- ═══════ HERO ═══════ -->
+
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
-  <div class="hero-grain"></div>
+  <div class="hero-vline"></div>
   <div class="hero-content">
+
     <div class="hero-left">
       <div class="hero-eyebrow">
-        <span>Est. Defence Colony, New Delhi</span>
+        <span>Founded 2004 · Defence Colony, New Delhi</span>
       </div>
       <h1 class="hero-heading">
-        <span class="firm-name">Ind-Legal:</span><br/>Justice Grounded in<br/><em>Precision</em>
+        <span class="brand">Ind-Legal:</span><br>
+        Where your challenges <br> <em>meet our commitment.</em>
       </h1>
       <p class="hero-sub">
-        Ind-Legal is a full-service law firm led by seasoned advocates and solicitors, offering rigorous legal representation across civil, commercial, and constitutional matters.
+        A premier full-service law firm headquartered in New Delhi, backed by a national affiliate network — delivering swift, practical and dependable legal solutions to businesses, institutions and individuals.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary"><span>Book Consultation</span></a>
-        <a href="#practice" class="btn-outline">Our Practice Areas</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@indlegal.in&su=Consultation%20Request&body=Hello%20Ind-Legal%2C%20I%20would%20like%20to%20book%20a%20consultation." class="btn-primary" target="_blank" rel="noopener noreferrer"><span>Email Consultation</span></a>
+        <a href="https://wa.me/919811198083?text=Hello%20Ind-Legal%2C%20I%20would%20like%20to%20book%20a%20consultation." class="btn-outline" target="_blank" rel="noopener noreferrer">WhatsApp Consultation</a>
       </div>
     </div>
+
     <div class="hero-card">
       <div class="hero-card-title">Reach Us Directly</div>
       <div class="contact-row">
         <div class="contact-icon">📍</div>
-        <div class="contact-info">
+        <div>
           <span class="contact-label">Office</span>
-          <div class="contact-value">A-138, Lower Ground Floor,<br/>Defence Colony, New Delhi – 110024</div>
+          <div class="contact-value">A-138, Lower Ground Floor,<br>Defence Colony, New Delhi – 110024</div>
         </div>
       </div>
       <div class="contact-row">
         <div class="contact-icon">📞</div>
-        <div class="contact-info">
+        <div>
           <span class="contact-label">Telephone</span>
-          <div class="contact-value">
-            <a href="tel:+911124332786">011-2433-2786</a>
-          </div>
+          <div class="contact-value"><a href="tel:+911124332786">011-2433-2786</a></div>
         </div>
       </div>
       <div class="contact-row">
         <div class="contact-icon">📱</div>
-        <div class="contact-info">
-          <span class="contact-label">Alternate Contact</span>
+        <div>
+          <span class="contact-label">Alternate</span>
           <div class="contact-value">
-            <a href="tel:+919811198083">+91 98111 98083</a> &nbsp;|&nbsp; <a href="tel:+919810112719">+91 98101 12719</a>
+            <a href="tel:+919811198083">+91 98111 98083</a>&nbsp;|&nbsp;<a href="tel:+919810112719">+91 98101 12719</a>
           </div>
-        </div>
-      </div>
-      <div class="contact-row">
-        <div class="contact-icon">📠</div>
-        <div class="contact-info">
-          <span class="contact-label">Fax</span>
-          <div class="contact-value">011-45070434</div>
         </div>
       </div>
       <div class="contact-row">
         <div class="contact-icon">✉️</div>
-        <div class="contact-info">
+        <div>
           <span class="contact-label">Email</span>
           <div class="contact-value"><a href="mailto:admin@indlegal.in">admin@indlegal.in</a></div>
         </div>
       </div>
-      <div class="gold-divider"><div class="gold-divider-diamond"></div></div>
-      <p style="font-size:0.75rem;color:rgba(217,187,150,0.5);text-align:center;letter-spacing:0.1em;">Mon – Sat &nbsp;|&nbsp; 9:00 AM – 6:00 PM</p>
+      <div class="orn-divider"><i></i></div>
+      <p class="hours-note">Mon – Sat &nbsp;·&nbsp; 9:00 AM – 6:00 PM</p>
     </div>
+
   </div>
 </section>
- 
-<!-- ═══════ STATS ═══════ -->
+
+<!-- ═══ STATS ══════════════════════════════════════════════════ -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat-item reveal">
-      <span class="stat-num">20<span class="stat-suffix">+</span></span>
-      <span class="stat-label">Years of Practice</span>
-    </div>
-    <div class="stat-item reveal" style="transition-delay:0.1s">
-      <span class="stat-num">98<span class="stat-suffix">%</span></span>
-      <span class="stat-label">Client Satisfaction</span>
-    </div>
-    <div class="stat-item reveal" style="transition-delay:0.2s">
-      <span class="stat-num">500<span class="stat-suffix">+</span></span>
-      <span class="stat-label">Cases Resolved</span>
-    </div>
-    <div class="stat-item reveal" style="transition-delay:0.3s">
-      <span class="stat-num">6</span>
-      <span class="stat-label">Practice Areas</span>
-    </div>
+    <div class="stat-item reveal"><span class="stat-num" data-target="20"><span class="stat-suffix">+</span></span><span class="stat-label">Years of Practice</span></div>
+    <div class="stat-item reveal" style="transition-delay:.1s"><span class="stat-num" data-target="98"><span class="stat-suffix">%</span></span><span class="stat-label">Client Satisfaction</span></div>
+    <div class="stat-item reveal" style="transition-delay:.2s"><span class="stat-num" data-target="500"><span class="stat-suffix">+</span></span><span class="stat-label">Cases Resolved</span></div>
+    <div class="stat-item reveal" style="transition-delay:.3s"><span class="stat-num" data-target="12"></span><span class="stat-label">Practice Areas</span></div>
   </div>
 </div>
- 
-<!-- ═══════ ABOUT ═══════ -->
+
+<!-- ═══ ABOUT ══════════════════════════════════════════════════ -->
 <section class="about" id="about">
-  <div class="section-inner about-grid">
-    <div class="about-image-wrap reveal">
-      <div class="about-image-block">
-        <img src="Law_image.jpg" alt="Law Office" class="about-image" />
-        <div style="position:relative;z-index:1;">
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--parchment);opacity:0.7;margin-bottom:0.5rem;">"The law is reason, free from passion."</p>
-          <p style="font-size:0.65rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;">— Aristotle</p>
+  <div class="s-inner about-grid">
+
+    <div class="about-img-wrap reveal">
+      <div class="about-img-block">
+        <img src="Law_image.jpg" alt="Ind-Legal Office">
+        <div class="about-quote">
+          <p>"The law is reason, free from passion."</p>
+          <cite>— Aristotle</cite>
         </div>
       </div>
-      <div class="about-badge">
-        <strong>20</strong>
-        <span>Years<br/>Excellence</span>
+      <div class="about-badge"><strong>20</strong><span>Years<br>Excellence</span></div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.12s">
+      <div class="orn"><span>About Ind-Legal</span></div>
+      <h2 class="s-title">Comprehensive Expertise.<br><em>Proven Results.</em></h2>
+      <p class="about-lead">
+        Ind-Legal is a premier full-service law firm founded in 2004 and headquartered in New Delhi, supported by a strong network of affiliates across India.
+      </p>
+      <p class="about-body">
+        For more than 20 years, we have delivered swift, practical, and dependable legal solutions to corporates, government bodies, and individuals. Our work spans litigation, arbitration, corporate advisory, real estate, finance, intellectual property, environmental law, labour and employment, insolvency, and strategic transactional matters.
+      </p>
+      <p class="about-body">
+        Every engagement is guided by a client-centric approach that combines bespoke legal strategy with deep domain insight — focused on outcomes that are clear, effective, and oriented to long-term value.
+      </p>
+      <div class="pillars">
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Client-focused legal strategy</div></div>
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Practical counsel for complex matters</div></div>
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Responsive service with integrity</div></div>
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Experienced litigation &amp; advisory support</div></div>
       </div>
     </div>
-    <div class="about-content reveal" style="transition-delay:0.15s">
-      <div class="eyebrow"><span>About IND Legal</span></div>
-      <h2 class="section-title">Steadfast Counsel.<br/><em>Trusted Advocacy.</em></h2>
-      <p class="about-lead">
-        We approach every case with meticulous preparation, strategic foresight, and an unwavering commitment to our clients' best outcomes.
+
+  </div>
+</section>
+
+<!-- ═══ MISSION ════════════════════════════════════════════════ -->
+<section class="mission" id="mission">
+  <div class="s-inner">
+    <div class="reveal">
+      <div class="orn"><span>Our Mission</span></div>
+      <h2 class="s-title">Safeguarding rights, protecting interests,<br><em>and building long-term value.</em></h2>
+      <p class="about-body" style="margin-top:1.4rem">
+        Ind-Legal is committed to delivering high-quality legal services that protect our clients' rights and interests while helping them navigate evolving business and regulatory challenges.
       </p>
       <p class="about-body">
-        Located in the heart of New Delhi's Defence Colony, Ind-Legal has built its reputation over decades on the pillars of integrity, expertise, and client-first service. Our team of advocates and solicitors brings deep experience across multiple domains of Indian law ranging from complex corporate disputes to sensitive personal matters,   ensuring every client receives counsel that is both comprehensive and compassionate.
+        Whether you are an individual seeking justice, a business managing compliance, or an institution pursuing strategic advice, we provide focused legal guidance at every stage.
       </p>
-      <p class="about-body">
-        We believe in transparent communication and clear strategy. You will always know where your case stands, what to expect, and how we plan to achieve the best possible result on your behalf.
-      </p>
-      <div class="about-pillars">
-        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Rigorous legal research &amp; preparation</div></div>
-        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Transparent, honest communication</div></div>
-        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Strategic courtroom representation</div></div>
-        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Confidential &amp; compassionate counsel</div></div>
+      <div class="pillars">
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Rights protection with practical counsel</div></div>
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Client-specific strategies for real outcomes</div></div>
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Trusted support in complex legal matters</div></div>
+        <div class="pillar"><div class="pillar-dot"></div><div class="pillar-text">Long-term value through dependable advocacy</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ PRACTICE AREAS ═══════ -->
+<!-- ═══ PRACTICE ═══════════════════════════════════════════════ -->
 <section class="practice" id="practice">
-  <div class="section-inner">
+  <div class="s-inner">
     <div class="reveal">
-      <div class="eyebrow"><span>What We Do</span></div>
-      <h2 class="section-title">Our Practice <em>Areas</em></h2>
-      <p class="practice-intro">
-        From the boardroom to the courtroom, our advocates provide authoritative counsel across all critical domains of Indian law.
-      </p>
+      <div class="orn"><span>What We Do</span></div>
+      <h2 class="s-title light">Our Practice <em>Areas</em></h2>
+      <p class="practice-intro">From the boardroom to the courtroom, our advocates provide authoritative counsel across all critical domains of Indian law.</p>
     </div>
     <div class="practice-grid">
-      <div class="practice-card reveal">
-        <span class="practice-icon">🏛</span>
-        <h3 class="practice-name">Civil Litigation</h3>
-        <p class="practice-desc">Representing clients in property disputes, contractual conflicts, injunctions, and other civil proceedings before all courts.</p>
-      </div>
-      <div class="practice-card reveal" style="transition-delay:0.1s">
-        <span class="practice-icon">⚖️</span>
-        <h3 class="practice-name">Corporate &amp; Commercial</h3>
-        <p class="practice-desc">Advisory and dispute resolution for businesses — mergers, contracts, partnerships, compliance, and regulatory matters.</p>
-      </div>
-      <div class="practice-card reveal" style="transition-delay:0.2s">
-        <span class="practice-icon">🏠</span>
-        <h3 class="practice-name">Real Estate &amp; Property</h3>
-        <p class="practice-desc">Expert handling of property transactions, title verification, landlord-tenant disputes, and land acquisition cases.</p>
-      </div>
-      <div class="practice-card reveal" style="transition-delay:0.1s">
-        <span class="practice-icon">👨‍👩‍👧</span>
-        <h3 class="practice-name">Family &amp; Matrimonial</h3>
-        <p class="practice-desc">Sensitive and expert guidance through divorce, custody, maintenance, adoption, and succession matters.</p>
-      </div>
-      <div class="practice-card reveal" style="transition-delay:0.2s">
-        <span class="practice-icon">📜</span>
-        <h3 class="practice-name">Constitutional &amp; Writ</h3>
-        <p class="practice-desc">Filing and arguing writ petitions before High Courts and the Supreme Court on matters of fundamental rights and public interest.</p>
-      </div>
-      <div class="practice-card reveal" style="transition-delay:0.3s">
-        <span class="practice-icon">🔒</span>
-        <h3 class="practice-name">Criminal Defence</h3>
-        <p class="practice-desc">Vigorous defence representation, bail applications, anticipatory bail, and advisory for accused persons at all stages.</p>
-      </div>
+      <div class="practice-card reveal"><span class="p-icon">🏠</span><h3 class="p-name">Real Estate &amp; Property</h3><p class="p-desc">Advising on transactions, title due diligence, land disputes, construction contracts, and property litigation.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.05s"><span class="p-icon">🏦</span><h3 class="p-name">Banking &amp; Finance</h3><p class="p-desc">Supporting lenders and borrowers in structured finance, security documentation, recovery, and regulatory compliance.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.1s"><span class="p-icon">🤝</span><h3 class="p-name">Arbitration, ADR &amp; Litigation</h3><p class="p-desc">Managing disputes through arbitration, mediation, conciliation and court proceedings to achieve practical resolutions.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.15s"><span class="p-icon">📈</span><h3 class="p-name">Corporate &amp; Commercial</h3><p class="p-desc">Transactional support, contract drafting, corporate governance, compliance and dispute avoidance for businesses.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.2s"><span class="p-icon">🔗</span><h3 class="p-name">Mergers &amp; Acquisitions</h3><p class="p-desc">Handling due diligence, structuring, documentation and post-acquisition integration for corporate deals.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.25s"><span class="p-icon">⚖️</span><h3 class="p-name">Insolvency &amp; Bankruptcy</h3><p class="p-desc">Advising creditors, corporates and insolvency professionals on CIRP, liquidation, restructuring and recovery.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.3s"><span class="p-icon">🚧</span><h3 class="p-name">Projects &amp; Infrastructure</h3><p class="p-desc">Supporting project development, concession agreements, PPP structures and regulatory clearances.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.35s"><span class="p-icon">👥</span><h3 class="p-name">Labour &amp; Employment</h3><p class="p-desc">Guiding employers and employees through compliance, disputes, settlements and workforce regulation.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.4s"><span class="p-icon">💡</span><h3 class="p-name">Intellectual Property</h3><p class="p-desc">Protecting trademarks, copyrights, patents and trade secrets, and enforcing IP rights across India.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.45s"><span class="p-icon">🌿</span><h3 class="p-name">Environmental Law</h3><p class="p-desc">Advising on environmental clearances, compliance, pollution control cases and policy-driven risk management.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.5s"><span class="p-icon">📝</span><h3 class="p-name">Wills &amp; Trusts</h3><p class="p-desc">Preparing wills, trust documents and succession plans to protect family assets and minimise disputes.</p></div>
+      <div class="practice-card reveal" style="transition-delay:.55s"><span class="p-icon">❤️</span><h3 class="p-name">Matrimonial</h3><p class="p-desc">Handling divorce, maintenance, custody, adoption, domestic violence and family mediation matters.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ WHY US ═══════ -->
+<!-- ═══ WHY US ══════════════════════════════════════════════════ -->
 <section class="why" id="why">
-  <div class="section-inner why-grid">
+  <div class="s-inner why-grid">
     <div>
-      <div class="eyebrow reveal"><span>Why Choose Us</span></div>
-      <h2 class="section-title reveal">The IND LEGAL<br/><em>Difference</em></h2>
+      <div class="orn reveal"><span>Partner With Us</span></div>
+      <h2 class="s-title reveal">The Ind-Legal<br><em>Difference</em></h2>
+      
       <div class="why-list">
         <div class="why-item reveal">
           <div class="why-num">01</div>
-          <div class="why-body">
-            <h4 class="why-title">Deep Delhi Jurisdiction Knowledge</h4>
-            <p class="why-desc">Decades of practice in Delhi's courts give us unmatched procedural familiarity and established relationships that benefit every case.</p>
+          <div>
+            <h4 class="why-title">Prompt, Practical Legal Solutions</h4>
+            <p class="why-desc">We deliver timely, commercially sound legal advice that helps clients navigate complex issues with confidence.</p>
           </div>
         </div>
-        <div class="why-item reveal" style="transition-delay:0.1s">
+        <div class="why-item reveal" style="transition-delay:.08s">
           <div class="why-num">02</div>
-          <div class="why-body">
-            <h4 class="why-title">Senior-Led Representation</h4>
-            <p class="why-desc">Every matter is personally supervised by senior advocates — not delegated to juniors — ensuring consistent quality and accountability.</p>
+          <div>
+            <h4 class="why-title">Full-Service Legal Expertise</h4>
+            <p class="why-desc">Our firm covers litigation, arbitration, corporate advisory, real estate and related practice areas for a complete solution.</p>
           </div>
         </div>
-        <div class="why-item reveal" style="transition-delay:0.2s">
+        <div class="why-item reveal" style="transition-delay:.16s">
           <div class="why-num">03</div>
-          <div class="why-body">
-            <h4 class="why-title">Clear, Transparent Billing</h4>
-            <p class="why-desc">No hidden fees. We provide detailed fee structures upfront so clients can plan with clarity and confidence.</p>
+          <div>
+            <h4 class="why-title">Trusted by Corporates, Government & Individuals</h4>
+            <p class="why-desc">Leading businesses, institutions and individual clients rely on our experienced team and strong national affiliate network.</p>
           </div>
         </div>
-        <div class="why-item reveal" style="transition-delay:0.3s">
+        <div class="why-item reveal" style="transition-delay:.24s">
           <div class="why-num">04</div>
-          <div class="why-body">
-            <h4 class="why-title">Strategic, Results-Focused Approach</h4>
-            <p class="why-desc">We frame every strategy around your specific goals — whether that means settlement, mediation, or full courtroom litigation.</p>
+          <div>
+            <h4 class="why-title">Client-Centric Bespoke Strategies</h4>
+            <p class="why-desc">We tailor every engagement to your objectives, combining deep domain expertise with practical, result-oriented counsel.</p>
+          </div>
+        </div>
+        <div class="why-item reveal" style="transition-delay:.32s">
+          <div class="why-num">05</div>
+          <div>
+            <h4 class="why-title">Integrity, Excellence & Enduring Value</h4>
+            <p class="why-desc">Our commitment to professionalism and trust enables long-term relationships and dependable legal support.</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="why-right reveal" style="transition-delay:0.2s">
-      <div class="testimonial-block">
-        <p class="testimonial-text">
-          "IND LEGAL handled our complex property dispute with a level of professionalism and strategic clarity I had not seen before. They kept us informed at every step and secured an outcome beyond our expectations."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-dot">R</div>
-          <div class="author-info">
-            <div class="author-name">Rajiv Mehta</div>
-            <div class="author-role">Corporate Client, New Delhi</div>
+
+    <div class="reveal" style="transition-delay:.18s">
+      <div class="testimonial">
+        <p class="testimonial-text">"Ind-Legal provided dependable counsel and clear direction when we needed it most. Their blend of litigation strength and corporate advisory expertise made the difference in our case."</p>
+        <div class="t-author">
+          <div class="t-dot">S</div>
+          <div>
+            <div class="t-name">Sunita Agarwal</div>
+            <div class="t-role">Commercial Client, New Delhi</div>
           </div>
         </div>
       </div>
-      <div class="cert-badges">
-        <div class="cert-badge">
-          <span class="cert-icon">🏛</span>
-          <span class="cert-text">Delhi Bar<br/>Council</span>
-        </div>
-        <div class="cert-badge">
-          <span class="cert-icon">⚖️</span>
-          <span class="cert-text">Supreme Court<br/>Enrolled</span>
-        </div>
-        <div class="cert-badge">
-          <span class="cert-icon">🔏</span>
-          <span class="cert-text">Solicitors<br/>Registered</span>
-        </div>
-        <div class="cert-badge">
-          <span class="cert-icon">🤝</span>
-          <span class="cert-text">Mediation<br/>Certified</span>
-        </div>
+      <div class="cert-grid">
+        <div class="cert-item"><span>🏛</span><span class="cert-label">Delhi Bar<br>Council</span></div>
+        <div class="cert-item"><span>⚖️</span><span class="cert-label">Supreme Court<br>Bar Member</span></div>
+        <div class="cert-item"><span>🔏</span><span class="cert-label">Corporate<br>Governance</span></div>
+        <div class="cert-item"><span>🤝</span><span class="cert-label">Dispute<br>Resolution</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ PARTNERS ═══════ -->
+<!-- ═══ PARTNERS ════════════════════════════════════════════════ -->
 <section class="partners" id="partners">
-  <div class="section-inner">
+  <div class="s-inner">
     <div class="reveal">
-      <div class="eyebrow"><span>Leadership</span></div>
-      <h2 class="section-title">Meet Our <em>Partners</em></h2>
-      <div class="partners-grid">
-        <article class="partner-card reveal">
-          <div class="partner-name">MR. RAKESH SINHA</div>
-          <div class="partner-role">Partner</div>
-          <div class="partner-contact">
-            <span>Mobile</span>
-            <a href="tel:+919811198083">+91-98111-98083</a>
-          </div>
-          <div class="partner-contact">
-            <span>Email</span>
-            <a href="mailto:rakeshsinha@indlegal.in">rakeshsinha@indlegal.in</a>
-          </div>
-        </article>
-        <article class="partner-card reveal" style="transition-delay:0.1s">
-          <div class="partner-name">MD. GHULAM AKBAR</div>
-          <div class="partner-role">Partner</div>
-          <div class="partner-contact">
-            <span>Mobile</span>
-            <a href="tel:+919810112719">+91-98101-12719</a>
-          </div>
-          <div class="partner-contact">
-            <span>Email</span>
-            <a href="mailto:mgakbar@indlegal.in">mgakbar@indlegal.in</a>
-          </div>
-        </article>
-      </div>
+      <div class="orn"><span>Leadership</span></div>
+      <h2 class="s-title">Meet Our <em>Partners</em></h2>
+    </div>
+    <div class="partners-grid">
+
+      <article class="partner-card reveal" style="transition-delay:.08s">
+        <div class="partner-initial">RS</div>
+        <div class="partner-name">Mr. Rakesh Sinha</div>
+        <div class="partner-role">Partner</div>
+        <div class="partner-detail">
+          <span class="partner-detail-label">Mobile</span>
+          <a href="tel:+919811198083">+91-98111-98083</a>
+        </div>
+        <div class="partner-detail">
+          <span class="partner-detail-label">Email</span>
+          <a href="mailto:rakeshsinha@indlegal.in">rakeshsinha@indlegal.in</a>
+        </div>
+      </article>
+
+      <article class="partner-card reveal" style="transition-delay:.16s">
+        <div class="partner-initial">GA</div>
+        <div class="partner-name">Md. Ghulam Akbar</div>
+        <div class="partner-role">Partner</div>
+        <div class="partner-detail">
+          <span class="partner-detail-label">Mobile</span>
+          <a href="tel:+919810112719">+91-98101-12719</a>
+        </div>
+        <div class="partner-detail">
+          <span class="partner-detail-label">Email</span>
+          <a href="mailto:mgakbar@indlegal.in">mgakbar@indlegal.in</a>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
- 
-<!-- ═══════ CONTACT ═══════ -->
+
+<!-- ═══ CONTACT ════════════════════════════════════════════════ -->
 <section class="contact-section" id="contact">
-  <div class="section-inner contact-grid">
+  <div class="s-inner contact-grid">
+
     <div class="reveal">
-      <div class="eyebrow"><span>Get In Touch</span></div>
-      <h2 class="section-title">Begin Your<br/><em>Consultation</em></h2>
-      <p class="contact-desc">
-        Your first consultation is an opportunity to understand your legal position. Reach out and let us assess your matter with the care it deserves.
-      </p>
+      <div class="orn"><span>Get In Touch</span></div>
+      <h2 class="s-title">Begin Your<br><em>Consultation</em></h2>
+      <p class="contact-desc">Your first consultation is an opportunity to understand your legal position. Reach out and let us assess your matter with the care it deserves.</p>
       <div class="contact-details">
-        <div class="contact-detail-row">
-          <div class="detail-icon">📍</div>
-          <div class="detail-text">
-            <span class="detail-label">Office Address</span>
-            <div class="detail-value">A-138, Lower Ground Floor,<br/>Defence Colony, New Delhi – 110024</div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <span class="c-label">Office Address</span>
+            <div class="c-val">A-138, Lower Ground Floor,<br>Defence Colony, New Delhi – 110024</div>
           </div>
         </div>
-        <div class="contact-detail-row">
-          <div class="detail-icon">📞</div>
-          <div class="detail-text">
-            <span class="detail-label">Phone</span>
-            <div class="detail-value">
-              <a href="tel:01124332786">011-24332786</a> &nbsp;/&nbsp;
-              <a href="tel:9811198083">98111-98083</a>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <span class="c-label">Phone</span>
+            <div class="c-val"><a href="tel:01124332786">011-24332786</a> &nbsp;/&nbsp; <a href="tel:9811198083">98111-98083</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <span class="c-label">Email</span>
+            <div class="c-val"><a href="mailto:admin@indlegal.in">admin@indlegal.in</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🕐</div>
+          <div>
+            <span class="c-label">Office Hours</span>
+            <div class="c-val">Monday – Saturday, 9:00 AM – 6:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.14s">
+      <article class="contact-panels">
+        <div class="contact-panel">
+          <h3>Reach our team directly</h3>
+          <p>Send us a message or start a conversation on WhatsApp. We are ready to discuss your case, clarify next steps, and connect you with the right advocate.</p>
+          <div class="contact-panel-list">
+            <div class="contact-panel-item">
+              <div class="contact-panel-icon">✉️</div>
+              <div class="contact-panel-copy">
+                <strong>Email</strong>
+                <a href="mailto:admin@indlegal.in">admin@indlegal.in</a>
+              </div>
+            </div>
+            <div class="contact-panel-item">
+              <div class="contact-panel-icon">📞</div>
+              <div class="contact-panel-copy">
+                <strong>Phone</strong>
+                <a href="tel:+911124332786">011-24332786</a><br>
+                <a href="tel:+919811198083">+91 98111 98083</a>
+              </div>
+            </div>
+            <div class="contact-panel-item">
+              <div class="contact-panel-icon">💬</div>
+              <div class="contact-panel-copy">
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/919811198083" target="_blank" rel="noreferrer">Chat with us now</a>
+              </div>
             </div>
           </div>
+          <a class="contact-panel-action" href="mailto:admin@indlegal.in">Email Us</a>
         </div>
-        <div class="contact-detail-row">
-          <div class="detail-icon">✉️</div>
-          <div class="detail-text">
-            <span class="detail-label">Email</span>
-            <div class="detail-value"><a href="mailto:admin@indlegal.in">admin@indlegal.in</a></div>
-          </div>
-        </div>
-        <div class="contact-detail-row">
-          <div class="detail-icon">🕐</div>
-          <div class="detail-text">
-            <span class="detail-label">Office Hours</span>
-            <div class="detail-value">Monday – Saturday, 9:00 AM – 6:00 PM</div>
-          </div>
-        </div>
-      </div>
+      </article>
     </div>
-    <div class="reveal" style="transition-delay:0.15s">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-field">
-            <label>Full Name</label>
-            <input type="text" placeholder="Your name" required/>
-          </div>
-          <div class="form-field">
-            <label>Phone Number</label>
-            <input type="tel" placeholder="+91 XXXXX XXXXX"/>
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Email Address</label>
-          <input type="email" placeholder="your@email.com" required/>
-        </div>
-        <div class="form-field">
-          <label>Area of Law</label>
-          <select>
-            <option value="">Select practice area…</option>
-            <option>Civil Litigation</option>
-            <option>Corporate &amp; Commercial</option>
-            <option>Real Estate &amp; Property</option>
-            <option>Family &amp; Matrimonial</option>
-            <option>Constitutional &amp; Writ</option>
-            <option>Criminal Defence</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Brief Description of Matter</label>
-          <textarea rows="5" placeholder="Describe your legal matter briefly…"></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="align-self:flex-start;">
-          <span>Send Enquiry →</span>
-        </button>
-        <p id="form-msg" style="font-size:0.8rem;color:var(--gold-light);display:none;margin-top:0.5rem;">Thank you — we will be in touch within 24 hours.</p>
-      </form>
-    </div>
+
   </div>
 </section>
- 
-<!-- ═══════ FOOTER ═══════ -->
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════ -->
 <footer>
-  <div class="footer-brand">IND LEGAL</div>
-  <p class="footer-copy">© 2024 IND Legal. All rights reserved. &nbsp;|&nbsp; Advocates &amp; Solicitors, New Delhi</p>
-  <ul class="footer-links">
+  <div class="f-brand">IND LEGAL</div>
+  <p class="f-copy">© 2026 Ind-Legal. All rights reserved. &nbsp;·&nbsp; Advocates &amp; Solicitors, New Delhi</p>
+  <ul class="f-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#practice">Services</a></li>
+    <li><a href="#partners">Partners</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
- 
+
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(r => observer.observe(r));
- 
-  // Animated counter
-  function animateCount(el, target, suffix = '') {
-    let start = 0;
-    const step = Math.ceil(target / 50);
-    const interval = setInterval(() => {
-      start = Math.min(start + step, target);
-      el.textContent = start + suffix;
-      if (start >= target) clearInterval(interval);
-    }, 30);
-  }
- 
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const nums = e.target.querySelectorAll('.stat-num');
-        nums.forEach(n => {
-          const raw = n.textContent.replace(/\D/g, '');
-          const suffix = n.querySelector('.stat-suffix')?.textContent || '';
-          animateCount(n, parseInt(raw), suffix);
-        });
-        statObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.stats-bar').forEach(s => statObserver.observe(s));
- 
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      navToggle.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        navToggle.classList.remove('open');
-      });
-    });
-  }
- 
-  // Nav scroll
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.boxShadow =
-      window.scrollY > 60 ? '0 4px 32px rgba(0,0,0,0.4)' : 'none';
+/* ── NAV ──────────────────────────────────── */
+const nav    = document.getElementById('nav');
+const toggle = document.getElementById('navToggle');
+const links  = document.getElementById('navLinks');
+
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+  toggle.classList.toggle('open');
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  links.classList.remove('open');
+  toggle.classList.remove('open');
+}));
+
+/* ── SCROLL EFFECTS ──────────────────────── */
+const floatCta = document.getElementById('floatCta');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 80);
+  floatCta.classList.toggle('show', y > 400);
+}, {passive:true});
+
+/* ── REVEAL ──────────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
   });
- 
-  // Form
-  function handleSubmit(e) {
-    e.preventDefault();
-    const msg = document.getElementById('form-msg');
-    msg.style.display = 'block';
-    e.target.reset();
-    setTimeout(() => { msg.style.display = 'none'; }, 5000);
-  }
+}, {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ── COUNTER ─────────────────────────────── */
+function runCounter(el){
+  const target = +el.dataset.target;
+  const suffix = el.querySelector('.stat-suffix')?.textContent || '';
+  let cur = 0;
+  const step = Math.max(1, Math.ceil(target / 55));
+  const tick = setInterval(() => {
+    cur = Math.min(cur + step, target);
+    el.innerHTML = cur + (suffix ? `<span class="stat-suffix">${suffix}</span>` : '');
+    if(cur >= target) clearInterval(tick);
+  }, 28);
+}
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.stat-num[data-target]').forEach(runCounter);
+      cio.unobserve(e.target);
+    }
+  });
+}, {threshold:.3});
+document.querySelectorAll('.stats-bar').forEach(el => cio.observe(el));
+
+/* ── FORM ─────────────────────────────────── */
+function handleSubmit(e){
+  e.preventDefault();
+  const msg = document.getElementById('form-msg');
+  msg.style.display = 'block';
+  e.target.reset();
+  setTimeout(() => { msg.style.display = 'none'; }, 6000);
+}
+
+/* ── ACTIVE NAV LINK ─────────────────────── */
+const sections = document.querySelectorAll('section[id], div[id]');
+const navAnchors = document.querySelectorAll('.nav-link');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      navAnchors.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(active) active.classList.add('active');
+    }
+  });
+}, {threshold:.4});
+sections.forEach(s => sectionObserver.observe(s));
 </script>
 </body>
 </html>
- 
